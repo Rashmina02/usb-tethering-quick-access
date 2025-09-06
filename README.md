@@ -1,16 +1,32 @@
-# usbtethering
+# USB Tethering Quick Access
 
-A new Flutter project.
+A Flutter app that provides quick access to USB tethering settings on Android devices, specifically optimized for Xiaomi Redmi Note 10 Pro.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- One-tap access to Portable Hotspot settings
+- Auto-closes after opening settings
+- Custom app icon
+- Optimized for Android 13
 
-A few resources to get you started if this is your first Flutter project:
+## How to Use
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Install the app
+2. Tap the app icon
+3. App automatically opens Portable Hotspot settings
+4. Manually toggle USB tethering ON/OFF
+5. App closes automatically
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Technology Stack
+
+- Flutter SDK
+- Kotlin for Android native code
+- GitHub for version control
+
+## Development
+
+```bash
+flutter clean
+flutter pub get
+flutter run
+```
