@@ -5,7 +5,7 @@ A Flutter app that provides quick access to USB tethering settings on Android de
 ## Features
 
 - One-tap access to Portable Hotspot settings
-- Auto-closes after opening settings
+- Auto-closes after opening settings(still on some developments)
 - Custom app icon
 - Optimized for Android 13
 
