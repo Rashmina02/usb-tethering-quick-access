@@ -1,20 +1,19 @@
 name: finance_tracker
 description: A personal finance tracking app with local JSON database
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  fl_chart: ^0.66.0  # Alternative chart package - no intl conflicts!
+  fl_chart: ^0.66.0 # Alternative chart package - no intl conflicts!
   path_provider: ^2.1.1
   intl: ^0.18.1
-  # intl package is included with Flutter SDK
-
+  csv: ^5.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

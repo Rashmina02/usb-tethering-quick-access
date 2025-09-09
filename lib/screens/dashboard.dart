@@ -2,6 +2,7 @@ import 'package:finance_tracker/screens/statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:finance_tracker/data/database.dart';
 import 'package:finance_tracker/screens/add_expense.dart';
+import 'package:finance_tracker/screens/export_screen.dart'; // Add this import
 
 class DashboardScreen extends StatefulWidget {
   @override
@@ -45,6 +46,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => StatisticsScreen()),
+              );
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.import_export), // Export icon
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ExportScreen()),
               );
             },
           ),
