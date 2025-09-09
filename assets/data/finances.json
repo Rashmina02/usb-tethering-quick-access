@@ -1,0 +1,25 @@
+{
+  "expenses": [
+    {
+      "id": "1",
+      "amount": 15.99,
+      "category": "Food",
+      "description": "Lunch at cafe",
+      "date": "2024-01-15",
+      "type": "expense"
+    },
+    {
+      "id": "2", 
+      "amount": 200.00,
+      "category": "Salary",
+      "description": "Monthly salary",
+      "date": "2024-01-01",
+      "type": "income"
+    }
+  ],
+  "categories": ["Food", "Transport", "Entertainment", "Shopping", "Bills", "Salary"],
+  "settings": {
+    "currency": "USD",
+    "monthlyBudget": 1000
+  }
+}
