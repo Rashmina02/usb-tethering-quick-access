@@ -4,6 +4,58 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
 class FinanceDatabase {
+  // Add to FinanceDatabase class:
+
+// Get expenses by month
+Future<Map<String, double>> getMonthlyExpenseData() async {
+  await loadData();
+  Map<String, double> monthlyData = {};
+
+  for (var expense in _data['expenses']) {
+    if (expense['type'] == 'expense') {
+      final date = DateTime.parse(expense['date']);
+      final monthKey = '${date.year}-${date.month.toString().padLeft(2, '0')}';
+      monthlyData[monthKey] = (monthlyData[monthKey] ?? 0) + expense['amount'];
+    }
+  }
+
+  return monthlyData;
+}
+
+// Get income by month  
+Future<Map<String, double>> getMonthlyIncomeData() async {
+  await loadData();
+  Map<String, double> monthlyData = {};
+
+  for (var expense in _data['expenses']) {
+    if (expense['type'] == 'income') {
+      final date = DateTime.parse(expense['date']);
+      final monthKey = '${date.year}-${date.month.toString().padLeft(2, '0')}';
+      monthlyData[monthKey] = (monthlyData[monthKey] ?? 0) + expense['amount'];
+    }
+  }
+
+  return monthlyData;
+}
+
+// Get monthly balance (income - expenses)
+Future<Map<String, double>> getMonthlyBalanceData() async {
+  final incomeData = await getMonthlyIncomeData();
+  final expenseData = await getMonthlyExpenseData();
+  
+  Map<String, double> balanceData = {};
+
+  // Combine all months from both income and expenses
+  final allMonths = {...incomeData.keys, ...expenseData.keys};
+  
+  for (var month in allMonths) {
+    final income = incomeData[month] ?? 0;
+    final expense = expenseData[month] ?? 0;
+    balanceData[month] = income - expense;
+  }
+
+  return balanceData;
+}
   // Singleton instance
   static final FinanceDatabase _instance = FinanceDatabase._internal();
   factory FinanceDatabase() => _instance;
