@@ -1,3 +1,4 @@
+import 'package:finance_tracker/screens/statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:finance_tracker/data/database.dart';
 import 'package:finance_tracker/screens/add_expense.dart';
@@ -38,6 +39,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
         title: Text('Finance Tracker'),
         backgroundColor: Colors.blueAccent,
         actions: [
+          IconButton(
+            icon: Icon(Icons.bar_chart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => StatisticsScreen()),
+              );
+            },
+          ),
           IconButton(
             icon: Icon(Icons.refresh),
             onPressed: _loadData,
