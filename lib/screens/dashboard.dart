@@ -23,7 +23,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final balance = await _db.getTotalBalance();
     final expenses = await _db.getMonthlyExpenses();
     final recent = await _db.getExpenses();
-    
+
     setState(() {
       _totalBalance = balance;
       _monthlyExpenses = expenses;
@@ -52,18 +52,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
             // Balance Card
             _buildBalanceCard(),
             SizedBox(height: 20),
-            
+
             // Monthly Expenses
             _buildMonthlyExpensesCard(),
             SizedBox(height: 20),
-            
+
             // Recent Transactions Header
             Text(
               'Recent Transactions',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            
+
             // Recent Transactions List
             _buildRecentTransactions(),
           ],
@@ -71,11 +71,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await Navigator.push(
+          final result = await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => AddExpenseScreen()),
           );
-          _loadData(); // Refresh data after adding expense
+
+          if (result == true) {
+            _loadData(); // Refresh data only if transaction was added
+          }
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.blueAccent,
@@ -168,7 +171,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   Widget _buildTransactionItem(Map<String, dynamic> expense) {
     final isIncome = expense['type'] == 'income';
-    
+
     return Card(
       margin: EdgeInsets.symmetric(vertical: 4.0),
       child: ListTile(
